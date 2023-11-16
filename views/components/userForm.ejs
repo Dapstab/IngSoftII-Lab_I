@@ -1,0 +1,105 @@
+<dialog class="user-modal">
+    <form class="user-form">
+        <h2>Crea un usuario</h2>
+        <label>
+            <div class="label-text">
+                Nombre <span class="required">*</span>
+            </div>
+            <input placeholder="Nombre" id="user-name" type="text"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Correo <span class="required">*</span>
+            </div>
+            <input placeholder="Correo" id="user-email" type="email"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Fecha nacimiento <span class="required">*</span>
+            </div>
+            <input placeholder="Fecha nacimiento" type="date" id="user-birthDate"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Teléfono <span class="required">*</span>
+            </div>
+            <input placeholder="Teléfono" type="tel" id="user-phone"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Sexo <span class="required">*</span>
+            </div>
+            <select id="user-sex">
+                <option value="masculino">Masculino</option>    
+                <option value="femenino">Femenino</option>    
+                <option value="no binario">No binario</option>    
+            </select>
+        </label>
+        <label>
+            <div class="label-text">
+                Padre de familia 
+            </div>
+            <select id="user-familyHead">
+                <option value="" disabled selected>Seleccionar</option>
+                <% users.forEach(function(user) { %>
+                    <option value="<%= user.id %>"><%= user.name %></option>
+                <% }); %>   
+            </select>
+        </label>
+        <button>Crear usuario</button>
+    </form>
+</dialog>
+
+<style>
+    .label-text {
+        display: flex;
+        align-items: center; /* Asegura alineación vertical */
+    }
+
+    .required {
+        color: red;
+        align-self: center;
+        margin-left: 0.25rem;
+        font-size: 20px;
+    }
+    .blur {
+        filter: blur(2000);
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        /* box-shadow: 0 20px 30px 10px #e6e6e6; */
+        max-width: 30rem;
+        padding: 3rem;
+        border-radius: 20px;
+        max-height: 80vh;
+        overflow-y: scroll;
+    }
+    form h2 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    form label {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0;
+    }
+    form button {
+        background-color: rgb(41, 92, 30);
+        color: white;
+        margin-top: 1rem;
+        padding: 1rem 0;
+        border-radius: 15px;
+        box-shadow: 0 5px 0px 0 rgb(11, 42, 4);
+    }
+    .user-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        border-radius: 20px;
+    }
+</style>

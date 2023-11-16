@@ -1,0 +1,236 @@
+@charset "UTF-8";
+:root, .light-theme {
+  --main-bg-clr: #f9f9f9;
+  --other-bg-clr: #f3f3f3;
+  --start-gradient-clr: #094b81;
+  --end-gradient-clr: #4ba7cf;
+  --primary-clr: black;
+  --text-clr: #212529;
+  --card-bg-clr: #094b81;
+  --card-text-clr: white;
+  --secondary-clr: #094b81;
+  --tertiary-clr: #f69420;
+  --box-shadow-clr: #cccccc;
+  --headline-clr: #094b81;
+  --footer-bg-clr: #094b81;
+  --social-bg-clr: #094b81;
+}
+
+.cta {
+  color: #094b81 !important;
+  background-color: #f69420;
+  font-size: clamp(1rem, 0.5rem + 4vw, 1.6rem);
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 0.4rem 1.8rem;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 4px 0 0;
+}
+.cta:hover {
+  background-color: #094b81;
+  box-shadow: 0 4px 0 0 black;
+  color: #FFF !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+*::selection {
+  background-color: #4ba7cf;
+  background-color: rgba(75, 167, 207, 0.5);
+  color: black;
+}
+
+*::-webkit-scrollbar {
+  width: 0.8rem; /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: #e2e2e2; /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #c1c1c1; /* creates padding around scroll thumb */
+}
+
+:target {
+  scroll-margin-top: 2rem;
+}
+
+.overlay {
+  z-index: 2;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(33, 37, 41, 0.2901960784);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html body {
+  font-family: "ArtegraSoft";
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  word-break: break-word;
+  font-size: clamp(1rem, 0.5rem + 3.5vw, 1.7rem) !important;
+  line-height: 1.6;
+  min-height: 100vh;
+  background-color: var(--main-bg-clr);
+  color: var(--text-clr);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+h2, h3 {
+  font-weight: 500;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 90vw;
+  min-height: 85vh;
+  margin: 0 auto;
+}
+
+form button {
+  border: none;
+}
+form label {
+  display: block;
+  cursor: pointer;
+}
+form input,
+form textarea,
+form select {
+  padding: 1rem;
+  font-size: 1.2rem !important;
+}
+form fieldset {
+  border: none;
+}
+form input, form textarea, form select {
+  color: var(--text-clr) !important;
+  background-color: var(--main-bg-clr) !important;
+  border: 1px solid var(--box-shadow-clr) !important;
+}
+
+input[type=checkbox] {
+  /* Hide the default checkbox */
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 0.8rem;
+  border: 2.3px solid #333; /* Border around the custom checkbox */
+  border-radius: 4px; /* Rounded corners for the checkbox */
+  outline: none; /* Remove the focus outline */
+  cursor: pointer; /* Show a pointer cursor when hovering */
+}
+
+/* Style the custom checkbox when it's checked */
+input[type=checkbox]:checked::before {
+  content: "✔";
+  color: #f69420;
+  font-size: 2rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Style the custom checkbox when it's hovered */
+input[type=checkbox]:hover {
+  border-color: #007bff; /* Change the border color when hovering over the checkbox */
+}
+
+a,
+a:visited {
+  color: #212529;
+  text-decoration: none;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+  background-color: #f6f6f6;
+}
+
+.logo {
+  height: clamp(2rem, 2rem + 5vw, 5rem);
+  width: clamp(10rem, 7rem + 7vw, 15rem);
+}
+
+@media (max-width: 800px) {
+  main {
+    width: 95vw !important;
+  }
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.6rem 10rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #20bf6b;
+}
+.alert--error {
+  background-color: #eb4d4b;
+}
+.icon-container {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+}
+
+.icono-actualizar, .icono-eliminar {
+  cursor: pointer; /* Cambia el cursor para indicar que son clicables */
+  margin-left: 5px; /* Espaciado entre iconos */
+  font-size: 20px;
+}
+/*# sourceMappingURL=global.css.map */

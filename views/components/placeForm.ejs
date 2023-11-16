@@ -1,0 +1,112 @@
+<dialog class="place-modal">
+    <form class="place-form">
+        <h2>Ingresa tu vivienda</h2>
+        <label>
+            <div class="label-text">
+                Dirección <span class="required">*</span>
+            </div>
+            <input placeholder="Dirección" id="place-direction" type="text"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Capacidad <span class="required">*</span>
+            </div>
+            <input placeholder="Capacidad" id="place-capacity" type="number"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Pisos (Niveles) <span class="required">*</span>
+            </div>
+            <input placeholder="# Pisos vivenda" type="number" id="place-levels"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Estrato <span class="required">*</span>
+            </div>
+            <input placeholder="Estrato" type="number" id="place-stratum"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Municipio <span class="required">*</span>
+            </div>
+            <select id="place-municipality">
+                <option value="" disabled selected>Seleccionar</option>
+                <% municipalities.forEach(function(municipality) { %>
+                    <option value="<%= municipality.id %>"><%= municipality.name %></option>
+                <% }); %>  
+            </select>
+        </label>
+        <label>
+            <div class="label-text">
+                Propietario <span class="required">*</span>
+            </div>
+            <select id="place-owner">
+                <option value="" disabled selected>Seleccionar</option>
+                <% users.forEach(function(user) { %>
+                    <option value="<%= user.id %>"><%= user.name %></option>
+                <% }); %>   
+            </select>
+        </label>
+        <label>
+            <div class="label-text">
+                Fecha de construcción <span class="required">*</span>
+            </div>
+            <input placeholder="Fecha de construcción" type="date" id="place-buildDate"/>
+        </label>
+        <button>Crear vivienda</button>
+    </form>
+</dialog>
+
+<style>
+    .label-text {
+        display: flex;
+        align-items: center; /* Asegura alineación vertical */
+    }
+
+    .required {
+        color: red;
+        align-self: center;
+        margin-left: 0.25rem;
+        font-size: 20px;
+    }
+    .blur {
+        filter: blur(2000);
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        /* box-shadow: 0 20px 30px 10px #e6e6e6; */
+        max-width: 30rem;
+        padding: 3rem;
+        border-radius: 20px;
+        max-height: 80vh;
+        overflow-y: scroll;
+    }
+    form h2 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    form label {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0;
+    }
+    form button {
+        background-color: rgb(41, 92, 30);
+        color: white;
+        margin-top: 1rem;
+        padding: 1rem 0;
+        border-radius: 15px;
+        box-shadow: 0 5px 0px 0 rgb(11, 42, 4);
+    }
+    .place-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        border-radius: 20px;
+    }
+</style>

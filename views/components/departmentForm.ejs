@@ -1,0 +1,85 @@
+<dialog class="department-modal">
+    <form class="department-form">
+        <h2>Ingresa el departamento</h2>
+        <label>
+            <div class="label-text">
+                Nombre <span class="required">*</span>
+            </div>
+            <input placeholder="Nombre" id="department-name" type="text"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Área <span class="required">*</span>
+            </div>
+            <input placeholder="Km (cuadrados)" id="department-area" type="number"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Presupuesto <span class="required">*</span>
+            </div>
+            <input placeholder="Unidad millones" type="number" id="department-budget"/>
+        </label>
+        <label>
+            <div class="label-text">
+                Población <span class="required">*</span>
+            </div>
+            <input placeholder="Unidad millones" type="number" id="department-population" step="0.1"/>
+        </label>
+        
+        <button>Crear departamento</button>
+    </form>
+</dialog>
+
+<style>
+    .label-text {
+        display: flex;
+        align-items: center; /* Asegura alineación vertical */
+    }
+
+    .required {
+        color: red;
+        align-self: center;
+        margin-left: 0.25rem;
+        font-size: 20px;
+    }
+    .blur {
+        filter: blur(2000);
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        /* box-shadow: 0 20px 30px 10px #e6e6e6; */
+        max-width: 30rem;
+        padding: 3rem;
+        border-radius: 20px;
+        max-height: 80vh;
+        overflow-y: scroll;
+    }
+    form h2 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    form label {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0;
+    }
+    form button {
+        background-color: rgb(41, 92, 30);
+        color: white;
+        margin-top: 1rem;
+        padding: 1rem 0;
+        border-radius: 15px;
+        box-shadow: 0 5px 0px 0 rgb(11, 42, 4);
+    }
+    .department-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        border-radius: 20px;
+    }
+</style>
