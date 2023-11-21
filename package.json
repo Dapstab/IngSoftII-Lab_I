@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "dev": "nodemon index.js",
     "start": "nodemon index.js",
-    "start:prod": "set NODE_ENV=production && nodemon server.js"
+    "start:prod": "set NODE_ENV=production && nodemon index.js",
+    "watch:js": "parcel watch"
   },
   "keywords": [],
   "author": "",
