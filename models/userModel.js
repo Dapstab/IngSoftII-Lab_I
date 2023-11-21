@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const Municipality = require('./municipioModel');
+const Place = require('./viviendaModel');
+const AppError = require('../utils/appError');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -74,6 +77,19 @@ userSchema.virtual('age').get(function () {
     }
     return null;
   });
+
+userSchema.pre('findOneAndDelete', async function(next) {
+    const doc = await this.model.findOne(this.getQuery());
+    console.log(doc);
+    const municipality = await Municipality.findOne({governor: doc.id});
+    const place = await Place.findOne({owner: doc.id});
+    console.log(place);
+    if (municipality) {
+        return next(new AppError('No puedes borrar este usuario porque actualmente es gobernador de un municipio', 403));
+    } else if (place) {
+        return next(new AppError('No puedes borrar este usuario porque actualmente es propietario de una vivienda', 403));
+    } else next();
+});
 
 const User = mongoose.model('User', userSchema);
 

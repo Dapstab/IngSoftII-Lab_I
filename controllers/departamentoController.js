@@ -1,3 +1,4 @@
+const catchAsync = require('../utils/catchAsync');
 const Department = require('./../models/departamentoModel');
 const factory = require('./handlerFactory');
 

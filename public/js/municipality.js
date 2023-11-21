@@ -47,7 +47,7 @@ const removeMunicipality = async () => {
           }, 1500);
       }
   } catch (error) {
-      showAlert('error', 'Error al eliminar el municipio');
+      showAlert('error', error.response.data.message);
       console.log(error);
   }
 };

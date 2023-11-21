@@ -30,7 +30,15 @@ document.querySelectorAll('.department-actualizar').forEach(btn => {
   });
 });
 
+document.querySelectorAll('.department-eliminar').forEach(btn => {
+  btn.addEventListener('click', async e => {
+      departmentIdActual = e.currentTarget.getAttribute('data-id');
+      await removeDepartment();
+  });
+});
+
 const removeDepartment = async () => {
+  
   if (!confirm('¿Estás seguro de que deseas eliminar este departamento?')) return;
 
   try {
@@ -47,17 +55,10 @@ const removeDepartment = async () => {
           }, 1500);
       }
   } catch (error) {
-      showAlert('error', 'Error al eliminar el departamento');
+      showAlert('error', error.response.data.message);
       console.log(error);
   }
 };
-
-document.querySelectorAll('.department-eliminar').forEach(btn => {
-  btn.addEventListener('click', e => {
-      departmentIdActual = e.currentTarget.getAttribute('data-id');
-      removeDepartment();
-  });
-});
 
 createButton.addEventListener('click', e => {
     // departmentModal.open = !departmentModal.open;

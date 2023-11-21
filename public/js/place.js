@@ -43,11 +43,11 @@ const removePlace = async () => {
           showAlert('success', 'Vivienda eliminado con éxito');
           
           window.setTimeout(() => {
-            location.assign('/');
+            location.assign('/viviendas');
           }, 1500);
       }
   } catch (error) {
-      showAlert('error', 'Error al eliminar el usuario');
+      showAlert('error', error.response.data.message);
       console.log(error);
   }
 };

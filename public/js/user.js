@@ -49,7 +49,7 @@ const removeUser = async () => {
           }, 1500);
       }
   } catch (error) {
-      showAlert('error', 'Error al eliminar el usuario');
+      showAlert('error', error.response.data.message);
       console.log(error);
   }
 };

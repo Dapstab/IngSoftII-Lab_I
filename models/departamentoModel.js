@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Municipality = require('./municipioModel');
+const AppError = require('../utils/appError')
 
 const departmentSchema = new mongoose.Schema({
     name: {
@@ -26,6 +28,14 @@ const departmentSchema = new mongoose.Schema({
     toJSON: { virtuals: true },
     toObject: { virtuals: true }, 
     timestamps: true
+});
+
+departmentSchema.pre('findOneAndDelete', async function(next) {
+    const doc = await this.model.findOne(this.getQuery());
+    const municipality = await Municipality.findOne({department: doc.id});
+    if (municipality) {
+        return next(new AppError('No puedes borrar el departamento porque esta asociado a un municipio actualmente', 403));
+    } else next();
 });
 
 
