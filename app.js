@@ -27,8 +27,8 @@ app.use(cors());
 app.options('*', cors());
 
 // Serving static files
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 if (process.env.NODE_ENV == 'development') {
   app.use(morgan('dev'));
