@@ -9,6 +9,7 @@ const User = require('../models/userModel');
 exports.getUsers = catchAsync(async (req, res, next) => {
     // 1) Obtener datos de usuarios de la colección
     let users = await User.find();
+    
     // 2) Formatear las fechas de nacimiento
     users = users.map(user => {
         // Clonar el objeto user para no modificar el original
@@ -21,7 +22,6 @@ exports.getUsers = catchAsync(async (req, res, next) => {
             month: 'long',
             day: 'numeric'
         });
-
         return userClone;
     });
 

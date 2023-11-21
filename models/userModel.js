@@ -58,6 +58,22 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
+userSchema.pre(/^find/, function(next) {
+    this.populate({
+      path: 'familyHead',
+      select: 'name'
+    });
+    next();
+});
+
+// userSchema.pre('save', async function(next) {
+//     const familyHead = await mongoose.model('User').findById(this.familyHead)
+//     if (familyHead.birthDate <= this.birthDate) {
+//         return next(new AppError('No puedes poner como cabeza de familia alguien cuya edad es menor que la tuya.', 403));
+//     }
+//     next()
+// })
+
 userSchema.statics.calcAge = function(birthDate) {
     const hoy = new Date();
     const fechaNacimiento = new Date(birthDate);
@@ -80,10 +96,10 @@ userSchema.virtual('age').get(function () {
 
 userSchema.pre('findOneAndDelete', async function(next) {
     const doc = await this.model.findOne(this.getQuery());
-    console.log(doc);
+    
     const municipality = await Municipality.findOne({governor: doc.id});
     const place = await Place.findOne({owner: doc.id});
-    console.log(place);
+
     if (municipality) {
         return next(new AppError('No puedes borrar este usuario porque actualmente es gobernador de un municipio', 403));
     } else if (place) {

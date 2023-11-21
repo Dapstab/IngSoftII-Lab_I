@@ -29,6 +29,7 @@
                 <p><span>Télefono:</span> <%= element.phone %></p>
                 <p><span>Fecha Nacimiento:</span> <%= element.birthDate %></p>
                 <p><span>Edad:</span> <%= element.age %></p>
+                <p><span>Padre de Familia:</span> <%=  element.familyHead && element.familyHead.name ? element.familyHead.name : 'No registrado' %></p>
               </div>
             <div class="icon-container">
                 <i class="icono-actualizar user-actualizar" data-id="<%= element.id %>">🔄</i> <!-- Ejemplo con emoji -->
